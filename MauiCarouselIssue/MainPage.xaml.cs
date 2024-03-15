@@ -1,6 +1,4 @@
-﻿using SkiaSharp.Views.Maui.Controls;
-
-namespace MauiCarouselIssue;
+﻿namespace MauiCarouselIssue;
 
 public class AllUpVM
 {
@@ -36,7 +34,7 @@ public partial class MainPage : ContentPage
   }
 }
 
-public class Board : SKCanvasView
+public class Board : GraphicsView
 {
 }
 
