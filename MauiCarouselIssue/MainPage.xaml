@@ -1,0 +1,51 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:ti="clr-namespace:MauiCarouselIssue"
+             x:Class="MauiCarouselIssue.MainPage">
+
+  <ContentPage.Resources>
+    <DataTemplate x:Key="firstPart" x:DataType="ti:PartPage">
+      <Grid Margin="0" RowDefinitions="auto,*" BackgroundColor="Yellow">
+        <Label Grid.Row="0"
+               FontSize="Large"
+               Text="{Binding Name}"
+               TextColor="Black"/>
+        <ContentView Grid.Row="1" Margin="20" BackgroundColor="CadetBlue" Content="{Binding ViewModel.Board}">
+        </ContentView>
+      </Grid>
+    </DataTemplate>
+
+    <DataTemplate x:Key="secondPart">
+      <Grid Margin="0" RowDefinitions="auto,*" BackgroundColor="GreenYellow">
+        <Label Grid.Row="0"
+                   FontSize="Large"
+                   Text="{Binding Name}"
+                   TextColor="Black"/>
+        <Label Grid.Row="1"
+                   FontSize="Large"
+                   Text="{Binding ViewModel.Content}"
+                   VerticalOptions="Center" />
+      </Grid>
+    </DataTemplate>
+
+    <ti:SelectionDataTemplateSelector x:Key="PageSelector"
+                                      FirstPartPage="{StaticResource firstPart}"
+                                      SecondPartPage="{StaticResource secondPart}" />
+  </ContentPage.Resources>
+
+  <Grid Margin="0">
+    <CarouselView Margin="0" ItemsSource="{Binding Parts}"
+                ItemTemplate="{StaticResource PageSelector}"
+                IndicatorView="indicatorView">
+    </CarouselView>
+    <IndicatorView x:Name="indicatorView"
+                   Margin="0,0,0,5"
+                   IndicatorColor="LightGray"
+                   SelectedIndicatorColor="DodgerBlue"
+                   HorizontalOptions="Center"
+                   VerticalOptions="End"/>
+
+  </Grid>
+
+</ContentPage>
